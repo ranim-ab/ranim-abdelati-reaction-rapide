@@ -1,4 +1,0 @@
-    <img src="https://i.pinimg.com/736x/77/ec/3f/77ec3f9b28a6855994e79dff6ec412af.jpg">
-
-
-url("https://i.pinimg.com/736x/2e/2e/69/2e2e69f030a59f70c0af2fc563366e62.jpg"),
