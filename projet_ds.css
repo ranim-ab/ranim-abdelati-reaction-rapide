@@ -9,7 +9,7 @@ header{
     color: rgb(27, 91, 187);
     font-size: 70px;
     font-weight: 700;
-    line-height: 200px;
+    line-height: 100px;
 }
 h1{
     color: rgb(106, 59, 2);
@@ -18,7 +18,7 @@ h1{
 p{
     color: rgb(106, 59, 2);
     font-size: 30px;
-    line-height: 200px;
+    line-height: 100px;
 }
 div{
     display: flex;
@@ -26,19 +26,32 @@ div{
     font-size: large;
 }
 button{
-  padding: 15px 25px;
-  font-size: larger;
-  font-family:'Franklin Gothic Medium';
-  cursor: pointer;
-  text-align: center;
-  color:rgb(240, 230, 206);
-  background-color: rgb(27, 91, 187);
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #99c3f4aa;
+    padding: 15px 25px;
+    font-size: larger;
+    font-family:'Franklin Gothic Medium';
+    cursor: pointer;
+    text-align: center;
+    color:rgb(240, 230, 206);
+    background-color: rgb(27, 91, 187);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #99c3f4aa;
 }
 
 button:active {
-  box-shadow: 0 5px #60a4f1b8;
-  transform: translateY(4px);
+    box-shadow: 0 5px #60a4f1b8;
+    transform: translateY(4px);
+}
+#ref{
+    display: inline-block;
+    padding: 100px 200px;
+    margin: 50px auto;
+    font-size: 60px;
+    font-family:'Franklin Gothic Medium';
+    cursor: pointer;
+    color:rgb(240, 230, 206);
+    background-color: rgb(27, 91, 187);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 9px #99c3f4aa;
 }
