@@ -1,52 +1,61 @@
-html{
+html, body{
     background: url("https://i.pinimg.com/736x/8b/2d/db/8b2ddbd9d7627effe0613e92252acc6f.jpg");
+    height: 100%; /*body prend tout la hauteur de la page*/
 }
 body{
     text-align: center;
     font-family:'Franklin Gothic Medium';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 header{
     color: rgb(27, 91, 187);
-    font-size: 70px;
+    font-size: 6vw;
     font-weight: 700;
-    line-height: 100px;
+    line-height: 100px; /*ou margin-bottom*/
 }
 h1{
     color: rgb(106, 59, 2);
-    font-size: 50px;
-}
-p{
-    color: rgb(106, 59, 2);
-    font-size: 30px;
-    line-height: 100px;
+    font-size: 4vw;
+    margin-bottom: 50px;
 }
 div{
-    display: flex;
-    justify-content: space-evenly;
+    display: flex; /*to control the layout of btns (elements of div)*/
+    justify-content: space-evenly;/*even space between btns*/
+    flex-wrap: wrap; 
+    gap: 20px;
     font-size: large;
+    width: 100%;
 }
 button{
-    padding: 15px 25px;
-    font-size: larger;
+    padding: 3vh 3vw;
+    font-size: 3vw;
     font-family:'Franklin Gothic Medium';
     cursor: pointer;
     text-align: center;
     color:rgb(240, 230, 206);
     background-color: rgb(27, 91, 187);
     border: none;
-    border-radius: 15px;
+    border-radius: 20px;  /* for rounded corners */
     box-shadow: 0 9px #99c3f4aa;
 }
 
 button:active {
     box-shadow: 0 5px #60a4f1b8;
-    transform: translateY(4px);
+    transform: translateY(4px); /*translation vers le bas pour donner l'eefet de clic*/
+}
+section{
+    margin-top: 50px;
 }
 #ref{
     display: inline-block;
-    padding: 90px 180px;
-    margin: 50px auto;
-    font-size: 60px;
+    padding: 8vh 12vw;
+    margin: 50px auto; /*auto pour centrer horizontalement et 50px distance entre ref et les autres boutons verticalement*/
+    font-size: 5vw;
+    width: auto;
+    max-width: 90vw; /*prevent overflow*/
     font-family:'Franklin Gothic Medium';
     cursor: pointer;
     color:rgb(240, 230, 206);
@@ -54,4 +63,29 @@ button:active {
     border: none;
     border-radius: 20px;
     box-shadow: 0 9px #99c3f4aa;
+}
+@media (max-width: 600px) {
+    #ref{
+        padding: 12vh 15vw;
+        font-size: 10vw;
+        width: auto;
+        max-width: 95vw;
+    }
+    header{
+        font-size: 10vw;
+        line-height: 60px;
+    }
+    h1{
+        font-size: 50px;
+    }
+    div{
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    button{
+        padding: 25px 25px;
+        font-size: 40px;
+        width: 80%;
+    }
 }
