@@ -10,42 +10,54 @@ let now = 0;
 let moy=0;
 let i=0;
 
-btnv.addEventListener("click", () => {
-    console.log("restartv");
+function reset_btn(){
+    const newBtn = btn.cloneNode(true);     
+    btn.parentNode.replaceChild(newBtn, btn);
+    btn = newBtn; 
+ }
+
+function restart(){
+    tm1=0;
+    wait = false;
+    to = null;
+    now = 0;
+    moy=0;
+    i=0;
     btn.style.backgroundColor = "rgb(27, 91, 187)";
     btn.innerHTML = "Cliquez pour commencer !";
+}
+
+btnv.addEventListener("click", () => {
+    console.log("restartv");
+    clearTimeout(to);
+    reset_btn();//reset btn maghir listeners
+    
+    restart(); //reinitialisation a chaque clic
     Commencer_v();
 });
 
+
 function Commencer_v() {
-    //tnahi listeners mtaa audio
-    btn.removeEventListener("click", Clic_a);
-    btn.removeEventListener("click", Tot_a);
-
-    //tnahi listeners lkdom mtaa visual bch tupdatihom
-    btn.removeEventListener("click", Clic_v);
-    btn.removeEventListener("click", Tot_v);
-
-    //update
     btn.addEventListener("click", Clic_v);
 }
 
 
 function Clic_v() {
-    if (tm1 === 0) {
+    if (tm1 == 0) {
         wait = true;
         console.log("click1");
         btn.style.backgroundColor = "rgb(27, 91, 187)";
         btn.innerHTML = "Attendez le rouge...";
-        tm1++;//bch yetaada toul lel click2
+        tm1=1;//bch yetaada toul lel click2
 
         to = setTimeout(() => {
             wait = false; 
             btn.style.backgroundColor = "red";
             now = performance.now();
+            console.log(now);
         }, 1000 + Math.random() * 3000);
 
-        btn.addEventListener("click", Tot_v);
+        btn.addEventListener("click", Tot_v, { once: true });//tkhdem mara bark
         
     }
     
@@ -54,6 +66,7 @@ function Clic_v() {
         let reaction = performance.now() - now;
         moy=moy+reaction;
         console.log(reaction);
+
         btn.removeEventListener("click", Tot_v);//sinon ca s'execute apres le resultat à chaque fois
         btn.innerHTML = Math.round(reaction) + " ms<br>Cliquez pour recommencer!";
         btn.style.backgroundColor = "rgba(101, 177, 238, 1)";
@@ -61,7 +74,7 @@ function Clic_v() {
         tm1 =0;
         i++;
         console.log(i);
-        endgame(i, Clic_v, Tot_v);
+        endgame(i);
     }
 }
 
@@ -73,7 +86,9 @@ function Tot_v() {
         btn.style.backgroundColor = "rgba(101, 177, 238, 1)";
         wait = false;
         tm1 = 0;
-        btn.removeEventListener("click", Tot_v);
+
+        reset_btn();//tnahi kol chay
+        Commencer_v();//taawd mloul
     }
     
 }
@@ -82,23 +97,14 @@ function Tot_v() {
 
 btna.addEventListener("click", () => {
     console.log("restarta");
-    btn.style.backgroundColor = "rgb(27, 91, 187)";
-    btn.innerHTML = "Cliquez pour commencer !";
+    clearTimeout(to);
+    reset_btn();
+    restart();
     Commencer_a();
 });
 
 function Commencer_a() {
-
-    //tnahi listeners mtaa visual
-    btn.removeEventListener("click", Clic_v);
-    btn.removeEventListener("click", Tot_v);
-
-    btn.removeEventListener("click", Clic_a);
-    btn.removeEventListener("click", Tot_a);
-    
-    //update
     btn.addEventListener("click", Clic_a);
-
 }
 
 function Clic_a() {
@@ -115,7 +121,7 @@ function Clic_a() {
             now = performance.now();
         }, 1000 + Math.random() * 3000);
 
-        btn.addEventListener("click", Tot_a);
+        btn.addEventListener("click", Tot_a, { once: true });//tkhdm mara w ttfaskh
     }
     
     else if (wait===false) {
@@ -123,34 +129,37 @@ function Clic_a() {
         let reaction = performance.now() - now;
         moy=moy+reaction;
         console.log(reaction);
-        btn.removeEventListener("click", Tot_a);
+
         btn.innerHTML = Math.round(reaction) + " ms<br>Cliquez pour recommencer!";
         btn.style.backgroundColor = "rgba(101, 177, 238, 1)";
 
         tm1 = 0;
         i++;
         console.log(i);
-        endgame(i, Clic_a, Tot_a);
+        endgame(i);
     }
 }
 function Tot_a() {
     if(wait){
         console.log("trop tot");
         clearTimeout(to);
+
         btn.innerHTML = "Oops ! Trop tôt, recommencez!";
         btn.style.backgroundColor = "rgba(101, 177, 238, 1)";
         wait = false;
         tm1 = 0;
-        btn.removeEventListener("click", Tot_a);
+
+        reset_btn();//tnahi kol chay 
+        Commencer_a();//taawd
     }
 }
-function endgame(i, clic, tot) {
+function endgame(i) {
     try{
         if(i==3) throw new Error("Test terminé");
     }
     catch (e) {
-        btn.removeEventListener("click", clic);
-        btn.removeEventListener("click", tot);
+
+        reset_btn();//tnahi listeners lkol
         console.log("Test terminé ! Vous avez fait "+i+" essais.");
         let score=Math.round(moy/3);
         let ch;
