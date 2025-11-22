@@ -23,7 +23,7 @@ function restart(){
     now = 0;
     moy=0;
     i=0;
-    btn.style.backgroundColor = "rgb(27, 91, 187)";
+    btn.style.backgroundColor = "rgb(89, 140, 217)";
     btn.innerHTML = "Cliquez pour commencer !";
 }
 
@@ -46,13 +46,13 @@ function Clic_v() {
     if (tm1 == 0) {
         wait = true;
         console.log("click1");
-        btn.style.backgroundColor = "rgb(27, 91, 187)";
+        btn.style.backgroundColor = "rgb(89, 140, 217)";
         btn.innerHTML = "Attendez le rouge...";
         tm1=1;//bch yetaada toul lel click2
 
         to = setTimeout(() => {
             wait = false; 
-            btn.style.backgroundColor = "red";
+            btn.style.backgroundColor = "rgba(191, 0, 0, 1)";
             now = performance.now();
             console.log(now);
         }, 1000 + Math.random() * 3000);
@@ -69,7 +69,7 @@ function Clic_v() {
 
         btn.removeEventListener("click", Tot_v);//sinon ca s'execute apres le resultat à chaque fois
         btn.innerHTML = Math.round(reaction) + " ms<br>Cliquez pour recommencer!";
-        btn.style.backgroundColor = "rgba(101, 177, 238, 1)";
+        btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
 
         tm1 =0;
         i++;
@@ -83,7 +83,7 @@ function Tot_v() {
         console.log("trop tot");
         clearTimeout(to);
         btn.innerHTML = "Oops ! Trop tôt, recommencez!";
-        btn.style.backgroundColor = "rgba(101, 177, 238, 1)";
+        btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
         wait = false;
         tm1 = 0;
 
@@ -111,7 +111,7 @@ function Clic_a() {
     if (tm1 === 0) {
         wait = true;
         console.log("click1");
-        btn.style.backgroundColor = "rgb(27, 91, 187)";
+        btn.style.backgroundColor = "rgb(89, 140, 217)";
         btn.innerHTML = "Attendez le signal sonore...";
         tm1 = 1; 
 
@@ -131,7 +131,7 @@ function Clic_a() {
         console.log(reaction);
 
         btn.innerHTML = Math.round(reaction) + " ms<br>Cliquez pour recommencer!";
-        btn.style.backgroundColor = "rgba(101, 177, 238, 1)";
+        btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
 
         tm1 = 0;
         i++;
@@ -145,7 +145,7 @@ function Tot_a() {
         clearTimeout(to);
 
         btn.innerHTML = "Oops ! Trop tôt, recommencez!";
-        btn.style.backgroundColor = "rgba(101, 177, 238, 1)";
+        btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
         wait = false;
         tm1 = 0;
 
@@ -173,7 +173,8 @@ function endgame(i) {
             ch="Réflexe lent";
         }
         btn.innerHTML ="Votre moyenne est de: "+score+" ms<br>"+ch;
-        btn.style.backgroundColor = "rgb(106, 59, 2)";
+        btn.style.backgroundColor = "rgba(152, 81, 145, 1)";
+        btn.style.boxShadow="none";
         tm1 = 0;
         i=0;
         moy=0;
