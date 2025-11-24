@@ -82,7 +82,7 @@ function Tot_visuel() {
     if(wait){
         console.log("trop tot");
         clearTimeout(to);
-        btn.innerHTML = "Oops ! Trop tôt, recommencez!";
+        btn.innerHTML = "Oops ! Trop tôt, continuez!";
         btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
         wait = false;
         tm1 = 0;
@@ -144,7 +144,7 @@ function Tot_audio() {
         console.log("trop tot");
         clearTimeout(to);
 
-        btn.innerHTML = "Oops ! Trop tôt, recommencez!";
+        btn.innerHTML = "Oops ! Trop tôt, continuez!";
         btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
         wait = false;
         tm1 = 0;
