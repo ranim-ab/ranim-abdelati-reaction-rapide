@@ -11,7 +11,7 @@ let moy=0;
 let i=0;
 
 function reset_btn(){
-    const newBtn = btn.cloneNode(true);     
+    const newBtn = btn.cloneNode(true);// true pour copier le contenu html du btn  
     btn.parentNode.replaceChild(newBtn, btn);
     btn = newBtn; 
  }
@@ -57,7 +57,7 @@ function Clic_visuel() {
             console.log(now);
         }, 1000 + Math.random() * 3000);
 
-        btn.addEventListener("click", Tot_v, { once: true });//tkhdem mara bark
+        btn.addEventListener("click", Tot_visuel, { once: true });//tkhdem mara bark
         
     }
     
