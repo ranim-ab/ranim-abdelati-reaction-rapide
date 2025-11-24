@@ -1,6 +1,6 @@
 let btn = document.getElementById("ref");
-let btnv = document.getElementById("btnv");
-let btna = document.getElementById("btna");
+let btn_visuel = document.getElementById("btnv");
+let btn_audio = document.getElementById("btna");
 let audio=new Audio('c:\\Users\\Rim\\Downloads\\beep-329314.mp3');
 
 let tm1=0;
@@ -27,22 +27,22 @@ function restart(){
     btn.innerHTML = "Cliquez pour commencer !";
 }
 
-btnv.addEventListener("click", () => {
-    console.log("restartv");
+btn_visuel.addEventListener("click", () => {
+    console.log("restartvis");
     clearTimeout(to);
     reset_btn();//reset btn maghir listeners
     
     restart(); //reinitialisation a chaque clic
-    Commencer_v();
+    Commencer_visuel();
 });
 
 
-function Commencer_v() {
-    btn.addEventListener("click", Clic_v);
+function Commencer_visuel() {
+    btn.addEventListener("click", Clic_visuel);
 }
 
 
-function Clic_v() {
+function Clic_visuel() {
     if (tm1 == 0) {
         wait = true;
         console.log("click1");
@@ -78,7 +78,7 @@ function Clic_v() {
     }
 }
 
-function Tot_v() {
+function Tot_visuel() {
     if(wait){
         console.log("trop tot");
         clearTimeout(to);
@@ -88,26 +88,26 @@ function Tot_v() {
         tm1 = 0;
 
         reset_btn();//tnahi kol chay
-        Commencer_v();//taawd mloul
+        Commencer_visuel();//taawd mloul
     }
     
 }
 
 
 
-btna.addEventListener("click", () => {
-    console.log("restarta");
+btn_audio.addEventListener("click", () => {
+    console.log("restartaud");
     clearTimeout(to);
     reset_btn();
     restart();
-    Commencer_a();
+    Commencer_audio();
 });
 
-function Commencer_a() {
-    btn.addEventListener("click", Clic_a);
+function Commencer_audio() {
+    btn.addEventListener("click", Clic_audio);
 }
 
-function Clic_a() {
+function Clic_audio() {
     if (tm1 === 0) {
         wait = true;
         console.log("click1");
@@ -121,7 +121,7 @@ function Clic_a() {
             now = performance.now();
         }, 1000 + Math.random() * 3000);
 
-        btn.addEventListener("click", Tot_a, { once: true });//tkhdm mara w ttfaskh
+        btn.addEventListener("click", Tot_audio, { once: true });//tkhdm mara w ttfaskh
     }
     
     else if (wait===false) {
@@ -139,7 +139,7 @@ function Clic_a() {
         endgame(i);
     }
 }
-function Tot_a() {
+function Tot_audio() {
     if(wait){
         console.log("trop tot");
         clearTimeout(to);
@@ -150,7 +150,7 @@ function Tot_a() {
         tm1 = 0;
 
         reset_btn();//tnahi kol chay 
-        Commencer_a();//taawd
+        Commencer_audio();//taawd
     }
 }
 function endgame(i) {
