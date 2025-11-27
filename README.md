@@ -4,7 +4,7 @@ Ce projet a pour objet un "Jeu de Réaction Rapide" qui a comme objectif de mesu
 
 
 
-\###L'interface### contient un HEADER, un TITRE (balise h1) et 3 BOUTONS: 2 pour choisir le signal et un sur lequel le joueur appuis et les scores sont affichés. 
+\###L'interface### contient un HEADER, un TITRE (balise h1) et 3 BOUTONS: 2 pour choisir le signal et un sur lequel le joueur appuis et les scores sont affichés.
 
 
 
@@ -20,7 +20,7 @@ Avant ça, l'appui sur le bouton BTN n'a aucun rôle.
 
 
 
-&nbsp;  Après une partie qui consiste de 3 essais, la moyenne est affichée dans le bouton même ainsi qu'un commentaire d'évaluation des réflexes du joueur.
+   Après une partie qui consiste de 3 essais, la moyenne est affichée dans le bouton même ainsi qu'un commentaire d'évaluation des réflexes du joueur.
 
 Un clic sur le bouton BTN\_VISUEL ou BTN\_AUDITIF après ou lors de la partie la réinitialise.
 
@@ -32,11 +32,11 @@ Un clic sur le bouton BTN\_VISUEL ou BTN\_AUDITIF après ou lors de la partie la
 
 
 
-* Pour la création d'une page ###responsive###, j'ai utilisé les dimensions vh, vw et % pour les éléments. 
+* Pour rendre la page responsive, j'ai utilisé les dimensions vh, vw et % pour les éléments.
 
 
 
-* J'ai oublié de faire un clearTimeout pour le timer que j'ai utilisé ce qui a engendré un changement de couleur et un signal sonore lorsque la partie est supposée réinitialisée. 
+* J'ai oublié de faire un clearTimeout pour le timer que j'ai utilisé ce qui a engendré un changement de couleur et un signal sonore lorsque la partie est supposée réinitialisée.
 
 
 
@@ -44,6 +44,3 @@ Un clic sur le bouton BTN\_VISUEL ou BTN\_AUDITIF après ou lors de la partie la
 
 * Le bouton avec l'effet de clic à l'aide de TranslateY().
 * L'utilisation de plusieurs EventListeners à la fois.
-
-
-

@@ -1,7 +1,7 @@
 let btn = document.getElementById("ref");
 let btn_visuel = document.getElementById("btnv");
 let btn_audio = document.getElementById("btna");
-let audio=new Audio('c:\\Users\\Rim\\Downloads\\beep-329314.mp3');
+const audio =new Audio('beep-329314.mp3');
 
 let tm1=0;
 let wait = false;
@@ -10,13 +10,15 @@ let now = 0;
 let moy=0;
 let i=0;
 
-function reset_btn(){
+function reset_btn(){ //crée un nouveau btn à chaque partie (au lieu de listeners)
+
     const newBtn = btn.cloneNode(true);// true pour copier le contenu html du btn  
     btn.parentNode.replaceChild(newBtn, btn);
     btn = newBtn; 
  }
 
-function restart(){
+function restart(){ //reinitialise la partie: moy,i=0
+
     tm1=0;
     wait = false;
     to = null;
@@ -27,13 +29,15 @@ function restart(){
     btn.innerHTML = "Cliquez pour commencer !";
 }
 
-btn_visuel.addEventListener("click", () => {
+
+//SI ON CLIQUE SUR BTN_VISUEL
+btn_visuel.addEventListener("click", () => { //la partie ne commence que lorsque btn_visuel est cliqué
+
     console.log("restartvis");
     clearTimeout(to);
-    reset_btn();//reset btn maghir listeners
-    
-    restart(); //reinitialisation a chaque clic
-    Commencer_visuel();
+    reset_btn();//reinitialiser btn
+    restart(); //reinitialiser la partie a chaque clic
+    Commencer_visuel();//ajouter le listener
 });
 
 
@@ -42,13 +46,13 @@ function Commencer_visuel() {
 }
 
 
-function Clic_visuel() {
-    if (tm1 == 0) {
+function Clic_visuel() { //fct à appeler a chaque clic du grand btn
+    if (tm1 == 0) { //on attend encore le rouge
         wait = true;
         console.log("click1");
         btn.style.backgroundColor = "rgb(89, 140, 217)";
         btn.innerHTML = "Attendez le rouge...";
-        tm1=1;//bch yetaada toul lel click2
+        tm1=1;//pour passer directement a else au 2eme click apres le rouge
 
         to = setTimeout(() => {
             wait = false; 
@@ -57,44 +61,41 @@ function Clic_visuel() {
             console.log(now);
         }, 1000 + Math.random() * 3000);
 
-        btn.addEventListener("click", Tot_visuel, { once: true });//tkhdem mara bark
+        btn.addEventListener("click", Tot_visuel, { once: true });//fonctionne une seule fois uis s'enlève elle-même
+        //s'éxecute seulement si on clique trop tot
         
     }
     
-    else if (wait===false) {
+    else if (wait===false) { //après le rouge
         console.log("click2");
         let reaction = performance.now() - now;
         moy=moy+reaction;
         console.log(reaction);
-
-        btn.removeEventListener("click", Tot_v);//sinon ca s'execute apres le resultat à chaque fois
         btn.innerHTML = Math.round(reaction) + " ms<br>Cliquez pour recommencer!";
         btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
-
-        tm1 =0;
+        btn.removeEventListener("click", Tot_visuel);//sinon ca s'execute au début de chaque tour (wait=true)
+        tm1 =0; //tour suivant
         i++;
         console.log(i);
-        endgame(i);
+        endgame(i);//voir si la partie est finie
     }
 }
 
-function Tot_visuel() {
-    if(wait){
+function Tot_visuel() { //si on clique trop tot
+    if(wait){ //si la couleur n'a pas encore changé 
         console.log("trop tot");
-        clearTimeout(to);
+        clearTimeout(to);// le tour ne continue que si on clique sur btn
         btn.innerHTML = "Oops ! Trop tôt, continuez!";
         btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
-        wait = false;
         tm1 = 0;
 
-        reset_btn();//tnahi kol chay
-        Commencer_visuel();//taawd mloul
+        reset_btn();//enlève tout 
+        Commencer_visuel();//pour continuer la partie
     }
-    
 }
 
 
-
+//SI ON CLIQUE SUR BTN_AUDIO (même principe pour btn_visuel)
 btn_audio.addEventListener("click", () => {
     console.log("restartaud");
     clearTimeout(to);
@@ -117,11 +118,12 @@ function Clic_audio() {
 
         to = setTimeout(() => {
             wait = false; 
-            audio.play();
+            audio.play();//audio commence après un certain temps
+            console.log("audio now");
             now = performance.now();
         }, 1000 + Math.random() * 3000);
 
-        btn.addEventListener("click", Tot_audio, { once: true });//tkhdm mara w ttfaskh
+        btn.addEventListener("click", Tot_audio, { once: true });
     }
     
     else if (wait===false) {
@@ -129,14 +131,13 @@ function Clic_audio() {
         let reaction = performance.now() - now;
         moy=moy+reaction;
         console.log(reaction);
-
         btn.innerHTML = Math.round(reaction) + " ms<br>Cliquez pour recommencer!";
         btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
-
+        btn.removeEventListener("click", Tot_audio);
         tm1 = 0;
         i++;
         console.log(i);
-        endgame(i);
+        endgame(i);//voir si la partie est finie
     }
 }
 function Tot_audio() {
@@ -146,11 +147,10 @@ function Tot_audio() {
 
         btn.innerHTML = "Oops ! Trop tôt, continuez!";
         btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
-        wait = false;
         tm1 = 0;
 
-        reset_btn();//tnahi kol chay 
-        Commencer_audio();//taawd
+        reset_btn();//enlève tout  
+        Commencer_audio();//continue la partie
     }
 }
 function endgame(i) {
@@ -159,14 +159,14 @@ function endgame(i) {
     }
     catch (e) {
 
-        reset_btn();//tnahi listeners lkol
+        reset_btn();//enlève tous les listeners
         console.log("Test terminé ! Vous avez fait "+i+" essais.");
         let score=Math.round(moy/3);
         let ch;
         if(score<=400){
             ch="Réflexe incroyable!";
         }
-        else if(400<score<=800){
+        else if(400<score && score<=800){
             ch="Réflexe moyen";
         }
         else{
@@ -175,9 +175,9 @@ function endgame(i) {
         btn.innerHTML ="Votre moyenne est de: "+score+" ms<br>"+ch;
         btn.style.backgroundColor = "rgba(152, 81, 145, 1)";
         btn.style.boxShadow="none";
+        //reinitialiser la partie
         tm1 = 0;
         i=0;
         moy=0;
-        
     }
 }
