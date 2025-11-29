@@ -26,7 +26,7 @@ A la fin de la partie, la moyenne est affichée dans le bouton même ainsi qu'un
 Un clic sur le bouton **"SIGNAL VISUEL"** ou **"SIGNAL SONORE"** après ou lors de la partie la réinitialise.
 
 ## Lien 
-Ce site a été crée à l'aide de [Github Pages](https://ranim-ab.github.io/ranim-abdelati-reaction-rapide/projet_ds.html)
+Ce site a été crée à l'aide de [Github Pages](https://ranim-ab.github.io/ranim-abdelati-reaction-rapide/)
 
 
 ## Nouveautés explorées
