@@ -25,7 +25,7 @@ function restart(){ //reinitialise la partie: moy,i=0
     now = 0;
     moy=0;
     i=0;
-    btn.style.backgroundColor = "rgb(89, 140, 217)";
+    btn.style.background = "linear-gradient(135deg, #6aa3ff, #4169e1)";
     btn.innerHTML = "Cliquez pour commencer !";
 }
 
@@ -50,13 +50,13 @@ function Clic_visuel() { //fct à appeler a chaque clic du grand btn
     if (tm1 == 0) { //on attend encore le rouge
         wait = true;
         console.log("click1");
-        btn.style.backgroundColor = "rgb(89, 140, 217)";
+        btn.style.background = "linear-gradient(135deg, #6aa3ff, #4169e1)";
         btn.innerHTML = "Attendez le rouge...";
         tm1=1;//pour passer directement a else au 2eme click apres le rouge
 
         to = setTimeout(() => {
             wait = false; 
-            btn.style.backgroundColor = "rgba(191, 0, 0, 1)";
+            btn.style.background = "rgba(191, 0, 0, 1)";
             now = performance.now();
             console.log(now);
         }, 1000 + Math.random() * 3000);
@@ -72,7 +72,7 @@ function Clic_visuel() { //fct à appeler a chaque clic du grand btn
         moy=moy+reaction;
         console.log(reaction);
         btn.innerHTML = Math.round(reaction) + " ms<br>Cliquez pour recommencer!";
-        btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
+        btn.style.background = "linear-gradient(135deg, rgba(83, 138, 158, 0.96), rgba(14, 124, 175, 1))";
         btn.removeEventListener("click", Tot_visuel);//sinon ca s'execute au début de chaque tour (wait=true)
         tm1 =0; //tour suivant
         i++;
@@ -86,7 +86,7 @@ function Tot_visuel() { //si on clique trop tot
         console.log("trop tot");
         clearTimeout(to);// le tour ne continue que si on clique sur btn
         btn.innerHTML = "Oops ! Trop tôt, continuez!";
-        btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
+        btn.style.background = "linear-gradient(135deg, rgba(83, 138, 158, 0.96), rgba(14, 124, 175, 1))";
         tm1 = 0;
 
         reset_btn();//enlève tout 
@@ -112,7 +112,7 @@ function Clic_audio() {
     if (tm1 === 0) {
         wait = true;
         console.log("click1");
-        btn.style.backgroundColor = "rgb(89, 140, 217)";
+        btn.style.background = "linear-gradient(135deg, #6aa3ff, #4169e1)";
         btn.innerHTML = "Attendez le signal sonore...";
         tm1 = 1; 
 
@@ -132,7 +132,7 @@ function Clic_audio() {
         moy=moy+reaction;
         console.log(reaction);
         btn.innerHTML = Math.round(reaction) + " ms<br>Cliquez pour recommencer!";
-        btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
+        btn.style.background = "linear-gradient(135deg, rgba(83, 138, 158, 0.96), rgba(14, 124, 175, 1))";
         btn.removeEventListener("click", Tot_audio);
         tm1 = 0;
         i++;
@@ -146,8 +146,7 @@ function Tot_audio() {
         clearTimeout(to);
 
         btn.innerHTML = "Oops ! Trop tôt, continuez!";
-        btn.style.backgroundColor = "rgba(66, 126, 148, 0.96)";
-        tm1 = 0;
+        btn.style.background = "linear-gradient(135deg, rgba(83, 138, 158, 0.96), rgba(14, 124, 175, 1))";
 
         reset_btn();//enlève tout  
         Commencer_audio();//continue la partie

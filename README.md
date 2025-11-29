@@ -10,7 +10,7 @@ Ce projet a pour objet un "Jeu de Réaction Rapide" qui a comme objectif de mesu
 
 
 Le jeu/test ne commence que lorsqu'on appuis sur un des deux boutons BTN\_VISUEL ou BTN\_AUDIO.
-
+ 
 Avant ça, l'appui sur le bouton BTN n'a aucun rôle.
 
 * **TEST VISUEL**: on clique sur le grand bouton (BTN) pour commencer la partie. Le joueur attend le rouge et clique dès qu'il le voit. Son temps de réflexe est immédiatement affiché dans le bouton même. S'il clique trop tôt, le message "Oops ! Trop tôt, recommencez!" s'affiche mais l'essai ne se réinitialise pas (la partie continue).

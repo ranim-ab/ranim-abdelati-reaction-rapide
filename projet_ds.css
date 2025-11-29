@@ -1,85 +1,80 @@
 html, body{
     background-image: url("https://i.pinimg.com/1200x/40/f7/78/40f7786c1dde8003b1bac83a3410c4f8.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed; /*l'image ma ttharkch maa scroll*/
-    background-size: cover; /*l'image tetkass hasb la taille de l'ecran fi oudh stretch avec (100% 100%)*/
+    background-attachment: fixed; /*l'image ne bouge pas avec le scroll*/
+    background-size: cover; /*l'image est coupée selon la taille de l'écran au lieu de stretch avec (100% 100%)*/
     height: 100%; /*body prend tout la hauteur de la page*/
-}
-body{
     text-align: center;
     font-family:'Franklin Gothic Medium';
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+}
+.glass{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(3px);/* makes the bg transluscent*/
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.15);
 }
 header{
     color: rgb(89, 140, 217);
-    font-size: 6vw;
+    font-size: 4rem;
     font-weight: 700;
     line-height: 100px; /*ou margin-bottom*/
 }
 h1{
     color: rgba(176, 114, 169, 0.945);
-    font-size: 4vw;
-    margin-bottom: 50px;
+    font-size: 3rem;
+    margin-bottom: 80px;
 }
 div{
     display: flex; /*to control the layout of btns (elements of div)*/
     justify-content: space-evenly;/*even space between btns*/
     flex-wrap: wrap; 
     gap: 20px;
-    font-size: large;
     width: 100%;
 }
 button{
     padding: 3vh 3vw;
-    font-size: 3vw;
+    margin: 10px;
+    font-size: 2rem;
     font-family:'Franklin Gothic Medium';
     cursor: pointer;
     text-align: center;
     color:rgba(237, 228, 205, 0.89);
-    background-color: rgb(89, 140, 217);
+    background: linear-gradient(130deg,rgb(106, 163, 255),rgb(69, 112, 239));/*pour apparaitre plus lisse*/
     border: none;
     border-radius: 20px;  /* for rounded corners */
-    box-shadow: 0 9px #57718eaa;
+    box-shadow: 0 9px rgba(87, 113, 142, 0.667);
+    cursor: pointer;
+    transition:50ms ease;/*ease in and out*/
+}
+button:hover{
+    transform: translateY(-3px);/*translation vers le haut*/
+    box-shadow: 0px 10px 25px rgba(65,105,225,0.35);
 }
 
 button:active {
-    box-shadow: 0 5px #60a4f1b8;
+    box-shadow: 0 5px rgba(96, 164, 241, 0.722);
     transform: translateY(4px); /*translation vers le bas pour donner l'eefet de clic*/
-}
-section{
-    margin-top: 50px;
 }
 #ref{
     display: inline-block;
-    padding: 8vh 12vw;
+    padding: 6vh 12vw;
     margin: 50px auto; /*auto pour centrer horizontalement et 50px distance entre ref et les autres boutons verticalement*/
-    font-size: 5vw;
-    width: auto;
-    max-width: 90vw; /*prevent overflow*/
-    font-family:'Franklin Gothic Medium';
-    cursor: pointer;
-    color:rgba(237, 228, 205, 0.89);
-    background-color: rgb(89, 140, 217);
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0 9px #57718eaa;
+    font-size: 3rem;
+    max-width: 90vw; /*éviter l'overflow*/
 }
 @media (max-width: 600px) {
-    #ref{
-        padding: 12vh 15vw;
-        font-size: 10vw;
-        width: auto;
-        max-width: 95vw;
-    }
     header{
         font-size: 10vw;
         line-height: 60px;
     }
+    
     h1{
-        font-size: 50px;
+        font-size: 8vw;
     }
     div{
         flex-direction: column;
@@ -87,8 +82,13 @@ section{
         gap: 15px;
     }
     button{
-        padding: 25px 25px;
-        font-size: 40px;
+        padding: 3vh 0;
+        font-size: 6vw;
         width: 80%;
+    }
+    #ref{
+        padding: 12vh 10vw;
+        font-size: 10vw;
+        max-width: 95vw;
     }
 }
