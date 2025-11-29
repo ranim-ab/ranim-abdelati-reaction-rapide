@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/23833780/README.md)
 
 # Jeu Réaction Rapide
 
