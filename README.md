@@ -21,18 +21,9 @@ On clique sur le grand bouton pour commencer la partie qui consiste de 3 essais.
 Son temps de réflexe est immédiatement affiché dans le bouton même. 
 S'il clique trop tôt, le message **"Oops ! Trop tôt, recommencez!"** s'affiche et il doit cliquer une 2ème fois pour continuer.
 
-<<<<<<< HEAD
-Le jeu/test ne commence que lorsqu'on appuis sur un des deux boutons BTN\_VISUEL ou BTN\_AUDIO.
- 
-Avant ça, l'appui sur le bouton BTN n'a aucun rôle.
-
-* **TEST VISUEL**: on clique sur le grand bouton (BTN) pour commencer la partie. Le joueur attend le rouge et clique dès qu'il le voit. Son temps de réflexe est immédiatement affiché dans le bouton même. S'il clique trop tôt, le message "Oops ! Trop tôt, recommencez!" s'affiche mais l'essai ne se réinitialise pas (la partie continue).
-=======
 A la fin de la partie, la moyenne est affichée dans le bouton même ainsi qu'un commentaire d'évaluation des réflexes du joueur (lent, moyen ou incroyable).
 
 Un clic sur le bouton **"SIGNAL VISUEL"** ou **"SIGNAL SONORE"** après ou lors de la partie la réinitialise.
->>>>>>> 5888ac1c8e2c3119983c3738733ea4551af36ef5
-
 
 ## Lien 
 Ce site a été crée à l'aide de [Github Pages](https://ranim-ab.github.io/ranim-abdelati-reaction-rapide/projet_ds.html)
@@ -52,6 +43,7 @@ Ce site a été crée à l'aide de [Github Pages](https://ranim-ab.github.io/ran
 * J'ai employé les EventListeners sur le bouton pour réinitialiser les parties (```addEventListener()```, ```removeEventListener()```). Leur superposition a engendré plusieurs erreurs parmi lesquels un blockage complet du code lorsqu'on appuis plusieurs fois consecutives sur les boutons **"SIGNAL VISUEL"** et **"SIGNAL SONORE"**.
 
 * Rendre la page responsive.
+  
 ## Solutions apportées
 * Pour éviter le chevauchement, j'ai employé ```clearTimeout()``` pour chaque nouveau clic et lorsque le joueur clique trop tôt.
 
